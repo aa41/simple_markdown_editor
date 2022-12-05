@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_markdown/flutter_markdown.dart';
 import 'markdown_field.dart';
 import 'markdown_parse.dart';
 import 'markdown_toolbar.dart';
@@ -19,6 +20,9 @@ class MarkdownFormField extends StatefulWidget {
     this.cursorColor,
     this.focusNode,
     this.padding = const EdgeInsets.all(10),
+    this.styleSheetTheme,
+    this.styleSheet,
+    this.imageBuilder,
   }) : super(key: key);
 
   /// For enable toolbar options
@@ -117,6 +121,16 @@ class MarkdownFormField extends StatefulWidget {
   /// The amount of space by which to inset the child.
   final EdgeInsetsGeometry padding;
 
+  final MarkdownStyleSheetBaseTheme? styleSheetTheme;
+
+  /// Defines which [TextStyle] objects to use for which Markdown elements.
+  final MarkdownStyleSheet? styleSheet;
+
+  /// Signature for custom image widget.
+  ///
+  /// Used by [MarkdownWidget.imageBuilder]
+  final MarkdownImageBuilder? imageBuilder;
+
   @override
   _MarkdownFormFieldState createState() => _MarkdownFormFieldState();
 }
@@ -162,6 +176,9 @@ class _MarkdownFormFieldState extends State<MarkdownFormField> {
               data: _internalController.text == ""
                   ? "Type here. . ."
                   : _internalController.text,
+              imageBuilder: widget.imageBuilder,
+              styleSheet: widget.styleSheet,
+              styleSheetTheme: widget.styleSheetTheme,
             ),
           );
   }

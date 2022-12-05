@@ -70,6 +70,7 @@ class MarkdownParse extends StatelessWidget {
   /// Used by [MarkdownWidget.bulletBuilder]
   final MarkdownBulletBuilder? bulletBuilder;
 
+
   /// Enum to specify which theme being used when creating [MarkdownStyleSheet]
   ///
   /// [material] - create MarkdownStyleSheet based on MaterialTheme
